@@ -1,0 +1,28 @@
+*** KICKSTARTS ***
+-----------------------------
+linux ks=https://raw.githubusercontent.com/lmstock/fretting-server/master/55-basic-centOS.cfg
+
+
+*** PASSWORD BITS ***
+		
+# Root password - desmond108
+rootpw --iscrypted $6$aouwYL.ITqUXym/X$th0TIGTKJ/HWsV9Bfzz8CmSD0HW15b0VrdWBjw5tyHWTIQ9iOcMvSmP1p1IN.Eh4PxTROvft1roe7Bus6lv1j1
+
+
+***	NETWORK BITS ***
+
+# Network information
+network  --bootproto=dhcp --device=ens33 --nameserver=10.11.0.51,10.14.1.10 --ipv6=auto --activate
+network  --hostname=stockhomelab
+
+# Network information
+network  --bootproto=static --device=enp0s3 --gateway=192.168.86.1 --ip=192.168.86.55 --nameserver=8.8.8.8,8.8.4.4 --netmask=255.255.255.0 --ipv6=auto --activate
+network  --hostname=testCentOS
+
+
+
+
+
+***	USERS ***
+# user --name=stockl1 --gecos="Lisa Stock" --password=$6$aouwYL.ITqUXym/X$th0TIGTKJ/HWsV9Bfzz8CmSD0HW15b0VrdWBjw5tyHWTIQ9iOcMvSmP1p1IN.Eh4PxTROvft1roe7Bus6lv1j1 --iscrypted
+
