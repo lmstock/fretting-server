@@ -1,21 +1,21 @@
 from pathlib import Path
 import re
 
-'''
-Michelle Stock
-Python script that takes txt file from screen grabs of Scanability Errors page and returns count of unique errors by type
+# https://careerkarma.com/blog/python-sort-a-dictionary-by-value/
 
-https://careerkarma.com/blog/python-sort-a-dictionary-by-value/
+# to do: 
+# let user add file path and output file
+# add try except structure
 
-to do: 
-let user add file path and output file
-add try except structure
-'''
+# write new formatting to file
+
 
 dataFile = Path(r"C:\Users\michelle\Documents\pcssample.txt")
+outFile = Path(r"C:\Users\michelle\Documents\pcsOutput.txt")
 
 fhand = open(dataFile)
-fout = open('pcsOutput.txt', 'w')
+#fout = open('pcsOutput.txt', 'w')
+fout = open(outFile, 'w')
 count = 0
 hist = {}
 
@@ -40,17 +40,24 @@ for line in fhand:
 
         
 
-        fout.write(our_error + "\n")
+        
 
 print ("")
-print ( "QUAN     ERROR BY TYPE")
+fout.write("\n")
 
+header =  "QUAN\tERROR BY TYPE\n"
+print (header)
+fout.write(header)
 
 # sort dictionary by value
 hist_sort = sorted(hist.items(), key=lambda x: x[1], reverse=True)
 
 for i in hist_sort:
-    print(i[1], "\t", i[0])
+    error_count = str(i[1])
+    error_type = str(i[0])
+    line_out = str(error_count + "\t" + error_type + "\n")
+    print(line_out)
+    fout.write(line_out)
 
 print ("")
 print ( count, ': Total Errors')
